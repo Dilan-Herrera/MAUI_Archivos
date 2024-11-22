@@ -1,24 +1,34 @@
-﻿namespace ManejoDeDatosMAUI
+﻿using ManejoDeDatosMAUI.Modelos;
+using ManejoDeDatosMAUI.Repositories;
+
+namespace ManejoDeDatosMAUI
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        public EstudianteUDLA estudiante;
+        EstudianteUDLAFilesRepository _repository;
 
         public MainPage()
         {
             InitializeComponent();
+            _repository = new EstudianteUDLAFilesRepository();
+            estudiante = _repository.DevuelveInfoEstudianteUDLA(1);
+
+            BindingContext = estudiante;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void BotonGuardarEstudiante_Clicked(object sender, EventArgs e)
         {
-            count++;
+            EstudianteUDLA estudiante = new EstudianteUDLA
+            {
+                Id = 10,
+                Nombre = "Dilan Herrera",
+                Carrera = "Ingenieria en Software"
+            };
+            _repository.CrearEstudianteUDLA(estudiante);
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            bool crear_estuidante = _repository.CrearEstudianteUDLA(estudiante);
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
 

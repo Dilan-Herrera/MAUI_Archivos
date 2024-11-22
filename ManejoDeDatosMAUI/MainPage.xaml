@@ -24,12 +24,22 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
+            <Label
+                x:Name="label_id"
+                Text="{Binding Id}"/>
+            <Label
+                x:Name="label_nombre"
+                Text="{Binding Nombre}"/>
+            <Label
+                x:Name="label_carrera"
+                Text="{Binding Carrera}"/>
+
             <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+                x:Name="BotonGuardarEstudiante"
+                Text="Guardar Estudiante en Archivo"
+                Clicked="BotonGuardarEstudiante_Clicked"
+                />
+
         </VerticalStackLayout>
     </ScrollView>
 
