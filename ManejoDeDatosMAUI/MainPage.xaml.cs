@@ -6,13 +6,15 @@ namespace ManejoDeDatosMAUI
     public partial class MainPage : ContentPage
     {
         public EstudianteUDLA estudiante;
-        EstudianteUDLAFilesRepository _repository;
+        public List<EstudianteUDLA> estudiantes;
+        EstudianteUDLAApiRepository _repository;
 
         public MainPage()
         {
             InitializeComponent();
-            _repository = new EstudianteUDLAFilesRepository();
+            _repository = new EstudianteUDLAApiRepository();
             estudiante = _repository.DevuelveInfoEstudianteUDLA(1);
+            estudiantes = _repository.DevuelveListadoEstudianteUDLA();
 
             BindingContext = estudiante;
         }
